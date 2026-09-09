@@ -64,9 +64,7 @@ class BedrockAssistant:
 
     def _bedrock_client(self) -> Any:
         if self._client is None:
-            self._client = boto3.client(
-                "bedrock-runtime", region_name=self._region
-            )
+            self._client = boto3.client("bedrock-runtime", region_name=self._region)
         return self._client
 
     @staticmethod
@@ -106,4 +104,3 @@ Return one JSON object and no prose outside it. Use exactly this shape:
 
 Use "order": null until the customer has confirmed a complete order.
 Never invent menu items or prices. Keep the spoken message brief."""
-

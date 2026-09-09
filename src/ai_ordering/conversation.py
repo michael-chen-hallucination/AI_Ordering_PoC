@@ -89,4 +89,3 @@ class ConversationService:
     def _idempotency_key(stream_id: str, order: Order) -> str:
         content = f"{stream_id}:{order.canonical_json()}".encode()
         return hashlib.sha256(content).hexdigest()[:32]
-

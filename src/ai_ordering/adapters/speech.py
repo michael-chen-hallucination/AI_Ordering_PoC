@@ -40,9 +40,7 @@ class StreamingTranscriber:
         try:
             linear = audioop.ulaw2lin(payload, 2)
             if self._sample_rate != 8_000:
-                linear = audioop.ratecv(
-                    linear, 2, 1, 8_000, self._sample_rate, None
-                )[0]
+                linear = audioop.ratecv(linear, 2, 1, 8_000, self._sample_rate, None)[0]
             accepted = self._recognizer.AcceptWaveform(linear)
             raw_result = (
                 self._recognizer.Result()
@@ -150,4 +148,3 @@ class SpeechSynthesizer:
             return base64.b64encode(mulaw).decode("ascii")
         except Exception:
             raise SpeechError("speech synthesis failed") from None
-

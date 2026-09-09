@@ -52,4 +52,3 @@ class HttpOrderGateway:
             raise OrderGatewayError(
                 f"order service returned HTTP {response.status_code}"
             )
-

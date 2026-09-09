@@ -119,17 +119,15 @@ def test_call_webhook_returns_a_bidirectional_media_stream():
     assert response.status_code == 200
     assert response.content_type.startswith("text/xml")
     assert b"<Connect>" in response.data
-    assert b'wss://voice.example.com/media' in response.data
+    assert b"wss://voice.example.com/media" in response.data
 
 
 def test_call_webhook_derives_the_stream_url_from_request_host():
     app = create_app(Settings.from_env({}))
 
-    response = app.test_client().post(
-        "/call", base_url="https://public.example.com"
-    )
+    response = app.test_client().post("/call", base_url="https://public.example.com")
 
-    assert b'wss://public.example.com/media' in response.data
+    assert b"wss://public.example.com/media" in response.data
 
 
 def test_start_creates_a_session_and_returns_welcome_audio(transport):
@@ -244,4 +242,3 @@ def test_disconnect_is_safe_for_an_unknown_stream(transport):
     handler.disconnect("missing")
 
     assert service.stopped == ["missing"]
-

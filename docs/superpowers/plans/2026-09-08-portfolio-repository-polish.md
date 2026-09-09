@@ -43,7 +43,7 @@
 
 - [ ] **Step 1: Add packaging and development dependencies**
 
-Create `pyproject.toml` with a `src` package layout, runtime dependencies (`boto3`, `Flask`, `flask-sock`, `gTTS`, `pydub`, `requests`, `twilio`, `vosk`), and a `dev` extra containing `pytest`, `pytest-cov`, and `ruff`. Configure pytest with `pythonpath = ["src"]` and Ruff for Python 3.11 with an 88-character line length.
+Create `pyproject.toml` with a `src` package layout, portable runtime dependencies (`boto3`, `Flask`, `flask-sock`, `gTTS`, `pydub`, `requests`, `twilio`), a `speech` extra for the platform-specific `vosk` wheel, and a `dev` extra containing `pytest`, `pytest-cov`, and `ruff`. Configure pytest with `pythonpath = ["src"]` and Ruff for Python 3.11 with an 88-character line length.
 
 - [ ] **Step 2: Write failing configuration and model tests**
 
@@ -377,7 +377,7 @@ def test_call_webhook_returns_bidirectional_stream(app):
     response = app.test_client().post("/call")
     assert response.status_code == 200
     assert b"<Connect>" in response.data
-    assert b'wss://voice.example.com/media' in response.data
+    assert b"wss://voice.example.com/media" in response.data
 
 
 def test_health_does_not_require_cloud_credentials(app):
@@ -527,4 +527,3 @@ Expected: `main` is clean and aligned with `origin/main`.
 Run: `gh repo view michael-chen-hallucination/AI_Ordering_PoC --json description,repositoryTopics,url`
 
 Expected: the recruiter-facing description, seven focused topics, and correct public URL are returned.
-

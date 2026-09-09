@@ -30,7 +30,7 @@ dev = [
 where = ["src"]
 
 [tool.pytest.ini_options]
-addopts = "-ra"
+addopts = "-ra --cov=ai_ordering --cov-report=term-missing --cov-fail-under=85"
 filterwarnings = [
     "ignore:'audioop' is deprecated.*:DeprecationWarning",
     "ignore:invalid escape sequence.*:SyntaxWarning:pydub.utils",

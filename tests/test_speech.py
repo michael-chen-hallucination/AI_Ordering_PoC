@@ -71,9 +71,7 @@ def test_new_partial_speech_resets_the_silence_clock():
 
 
 def test_twilio_audio_is_decoded_and_resampled_before_recognition():
-    recognizer = ScriptedRecognizer(
-        [(False, json.dumps({"partial": "listening"}))]
-    )
+    recognizer = ScriptedRecognizer([(False, json.dumps({"partial": "listening"}))])
     transcriber = StreamingTranscriber(
         recognizer, silence_seconds=1.0, sample_rate=16_000
     )
@@ -203,4 +201,3 @@ def test_synthesis_failure_does_not_leak_provider_details(monkeypatch):
         SpeechSynthesizer().synthesize_ulaw("Order confirmed")
 
     assert "private provider response" not in str(error.value)
-

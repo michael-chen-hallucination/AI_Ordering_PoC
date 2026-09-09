@@ -57,9 +57,7 @@ class Menu:
         return format(self.item_for(name).price, ".2f")
 
     def as_prompt_text(self) -> str:
-        return "\n".join(
-            f"- {item.name}: ${item.price:.2f}" for item in self.items
-        )
+        return "\n".join(f"- {item.name}: ${item.price:.2f}" for item in self.items)
 
 
 DEFAULT_MENU = Menu.from_mapping(

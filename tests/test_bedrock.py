@@ -79,9 +79,7 @@ def test_fenced_json_response_is_validated():
     client = RecordingBedrockClient(
         {
             "output": {
-                "message": {
-                    "content": [{"text": f"```json\n{VALID_RESPONSE}\n```"}]
-                }
+                "message": {"content": [{"text": f"```json\n{VALID_RESPONSE}\n```"}]}
             }
         }
     )

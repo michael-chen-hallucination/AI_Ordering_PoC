@@ -73,4 +73,3 @@ def test_explicit_websocket_url_takes_precedence():
 def test_invalid_environment_values_fail_with_the_variable_name(name, value):
     with pytest.raises(ConfigurationError, match=name):
         Settings.from_env({name: value})
-

@@ -31,9 +31,7 @@ class RecordingOrderSink:
 
 def completed_turn(message="Your order is confirmed"):
     return parse_assistant_payload(
-        '{"message":"'
-        + message
-        + '","order":{"complete":true,'
+        '{"message":"' + message + '","order":{"complete":true,'
         '"items":[{"name":"Coke","quantity":2}]}}',
         DEFAULT_MENU,
     )
