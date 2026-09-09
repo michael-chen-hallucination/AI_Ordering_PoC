@@ -31,6 +31,10 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 addopts = "-ra"
+filterwarnings = [
+    "ignore:'audioop' is deprecated.*:DeprecationWarning",
+    "ignore:invalid escape sequence.*:SyntaxWarning:pydub.utils",
+]
 pythonpath = ["src"]
 testpaths = ["tests"]
 
